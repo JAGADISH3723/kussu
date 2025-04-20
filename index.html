@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Spark - Share Your Ideas</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f4f6;
+      color: #333;
+    }
+
+    .navbar {
+      background: #6200ea;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar img {
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .navbar span {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .navbar button {
+      background: #03dac6;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .navbar button:hover {
+      background: #018786;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .idea-box {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .idea-box textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 15px;
+      margin-top: 15px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .idea-box textarea:focus {
+      border-color: #6200ea;
+    }
+
+    .idea-box button {
+      margin-top: 15px;
+      background: #6200ea;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .idea-box button:hover {
+      background: #3700b3;
+    }
+
+    .idea-card {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .idea-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #6200ea;
+    }
+
+    .idea-card .comment-box {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .idea-card input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .idea-card button {
+      background: #6200ea;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .idea-card button:hover {
+      background: #3700b3;
+    }
+
+    .comment {
+      margin-top: 10px;
+      padding-left: 15px;
+      font-size: 14px;
+      color: #555;
+      border-left: 2px solid #6200ea;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div>
+      <img src="https://via.placeholder.com/50" alt="Logo">
+      <span>Student Spark</span>
+    </div>
+    <div>
+      <button onclick="alert('Profile Coming Soon!')">Profile</button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Post an Idea -->
+    <div class="idea-box">
+      <h2>Share Your Idea</h2>
+      <textarea id="ideaInput" placeholder="Write your idea here..."></textarea>
+      <button onclick="postIdea()">Post Idea</button>
+    </div>
+
+    <!-- Ideas Feed -->
+    <div id="ideasFeed">
+      <h2>Ideas Feed</h2>
+      <!-- Ideas will appear here dynamically -->
+    </div>
+  </div>
+
+  <script>
+    const ideas = [];
+
+    function postIdea() {
+      const ideaText = document.getElementById('ideaInput').value.trim();
+      if (ideaText === '') {
+        alert('Please enter an idea!');
+        return;
+      }
+      const idea = { text: ideaText, comments: [] };
+      ideas.push(idea);
+      renderIdeas();
+      document.getElementById('ideaInput').value = '';
+    }
+
+    function postComment(ideaIndex) {
+      const commentInput = document.getElementById(`commentInput-${ideaIndex}`);
+      const commentText = commentInput.value.trim();
+      if (commentText === '') {
+        alert('Please enter a comment!');
+        return;
+      }
+      ideas[ideaIndex].comments.push(commentText);
+      renderIdeas();
+    }
+
+    function renderIdeas() {
+      const ideasFeed = document.getElementById('ideasFeed');
+      ideasFeed.innerHTML = '';
+      ideas.forEach((idea, index) => {
+        const ideaDiv = document.createElement('div');
+        ideaDiv.classList.add('idea-card');
+        ideaDiv.innerHTML = `
+          <h3>${idea.text}</h3>
+          <div class="comment-box">
+            <input type="text" id="commentInput-${index}" placeholder="Write a solution...">
+            <button onclick="postComment(${index})">Post Solution</button>
+          </div>
+          ${idea.comments.map(comment => `<div class="comment">- ${comment}</div>`).join('')}
+        `;
+        ideasFeed.appendChild(ideaDiv);
+      });
+    }
+  </script>
+</body>
+</html>
