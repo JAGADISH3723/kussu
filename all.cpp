@@ -84,7 +84,7 @@ int main() {
 
  pointers and references ->keys points     -- ->    Use references (&) for cleaner code when modifying values.
 
-                                                Use pointers (*) when you need advanced memory control, dynamic allocation, or when working with arrays.
+                                            --->   Use pointers (*) when you need advanced memory control, dynamic allocation, or when working with arrays.
 
  
  #1)->
@@ -108,54 +108,49 @@ int main() {
  #include <bits/stdc++.h>
 using namespace std;
 void increament(int &a){
-     a++;
-    cout<<a;
+a++;
+cout<<a;
 }
 
 int main() {
-    int a;
-    cin>>a;
-  increament(a);
- return 0;
-#3.)
- 
+int a;
+cin>>a;
+increament(a);
+return 0; 
 } 
- #4). by reference
- #include <bits/stdc++.h>
+
+#4). by reference
+
+#include <bits/stdc++.h>
 using namespace std;
 void swap(int &a,int &b){
-    a^=b;
-    b^=a;
-    a^=b;
-    cout<<a<<" "<<b;
+ a^=b;
+ b^=a;
+ a^=b;
+ cout<<a<<" "<<b;
 }
 
 int main() {
-    int a,b;
-    cin>>a>>b;
-  swap(a,b);
- 
- 
+ int a,b;
+ cin>>a>>b;
+ swap(a,b);
  return 0;
 
 } 
  #50). by pointer#include <bits/stdc++.h>
 
-  using namespace std;
+using namespace std;
 void swap(int *a,int *b){
-    *a^=*b;
-    *b^=*a;
-    *a^=*b;
-    cout<<*a<<" "<<*b;
+*a^=*b;
+*b^=*a;
+*a^=*b;
+cout<<*a<<" "<<*b;
 }
 
 int main() {
-    int a,b;
-    cin>>a>>b;
-  swap(&a,&b);
- 
- 
- return 0;
-
+int a,b;
+cin>>a>>b;
+swap(&a,&b);
+return 0;
 }  
    
