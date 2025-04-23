@@ -2,8 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
  int main(){
-   
-   
    /*
       int a, b;
      cin>>a>>b;
@@ -82,6 +80,82 @@ int main() {
     cout << "Missing number is: " << missing;
 
     return 0;
+
+
+ pointers and references ->keys points     -- ->    Use references (&) for cleaner code when modifying values.
+
+                                                Use pointers (*) when you need advanced memory control, dynamic allocation, or when working with arrays.
+
+ 
+ #1)->
+#include <bits/stdc++.h>
+using namespace std;
+void change(int *arr,int n){
+     for(int i=0;i<n;i++){
+         arr[i]=n;
+     cout<<arr[i]<<" ";
+     }
 }
-    
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    change(arr,n);
+    return 0;
+}
+ #2)
+  
+ #include <bits/stdc++.h>
+using namespace std;
+void increament(int &a){
+     a++;
+    cout<<a;
+}
+
+int main() {
+    int a;
+    cin>>a;
+  increament(a);
+ return 0;
+#3.)
+ 
+} 
+ #4). by reference
+ #include <bits/stdc++.h>
+using namespace std;
+void swap(int &a,int &b){
+    a^=b;
+    b^=a;
+    a^=b;
+    cout<<a<<" "<<b;
+}
+
+int main() {
+    int a,b;
+    cin>>a>>b;
+  swap(a,b);
+ 
+ 
+ return 0;
+
+} 
+ #50). by pointer#include <bits/stdc++.h>
+
+  using namespace std;
+void swap(int *a,int *b){
+    *a^=*b;
+    *b^=*a;
+    *a^=*b;
+    cout<<*a<<" "<<*b;
+}
+
+int main() {
+    int a,b;
+    cin>>a>>b;
+  swap(&a,&b);
+ 
+ 
+ return 0;
+
+}  
    
