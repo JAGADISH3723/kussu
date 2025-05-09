@@ -199,7 +199,9 @@ int sumArray(int *arr, int n) {
 int maxElement(int *arr, int n) {
     int max = *arr;
     for (int i = 1; i < n; i++) {
-        if (*(arr + i) > max) max = *(arr + i);
+        if (*(arr + i) > max) {
+         max = *(arr + i);
+        }
     }
     return max;
 }
