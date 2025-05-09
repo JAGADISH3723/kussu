@@ -229,6 +229,36 @@ int countVowels(char *str) {
         str++;
     }
     return count;
+ void calculateQuotRem(int a, int b, int* quot, int* rem) {
+    if (b != 0) {
+        *quot = a / b;
+        *rem = a % b;
+    } else {
+        *quot = 0;
+        *rem = 0;
+    }
+}
+ void dynamicArrayAverage() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    int *arr = new int[n];
+    cout << "Enter " << n << " elements:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> *(arr + i);
+    }
+
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += *(arr + i);
+    }
+    double average = (n > 0) ? static_cast<double>(sum) / n : 0;
+    cout << "Average: " << average << endl;
+
+    delete[] arr;
+}
+
 }
 
 int main() {
@@ -250,7 +280,10 @@ int main() {
     reverseString(str);
     cout << "Reversed String: " << str << endl;
     cout << "Vowel Count: " << countVowels(str) << endl;
-
+int x = 17, y = 5, q, r;
+    calculateQuotRem(x, y, &q, &r);
+    cout << "Quotient: " << q << ", Remainder: " << r << endl;
+    dynamicArrayAverage();
     return 0;
 }
 
