@@ -2,7 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
  int main(){
-   /*
       int a, b;
      cin>>a>>b;
      cout<<"AND->"<< (a & b)<<endl;
@@ -12,8 +11,7 @@ using namespace std;
      cout<<(b >> 2) <<endl;  //(divide by 2)
 */
  
- /*
- // swapping using xor
+ swapping using xor
  
   a=a^b;
   b=b^a;
@@ -23,29 +21,29 @@ using namespace std;
   cout<<"before b=5 . after swappping b is become" <<b << endl;
   */
 
- /*
- // Write a program that prints all even numbers from 1 to 20 using & operator. 
+   
+   Write a program that prints all even numbers from 1 to 20 using & operator. 
+   
      for(int i=0;i<b;i++){
      if((i&1) ==0 ){
          cout<< " even nums from 1 to 20 -> "<<i<<endl;  //why only  & operation with 1 to check even or odd ,becz it gives units place 0 ot 1 if 1-> true (odd),if its false(0->even)
      }
  }
-*/
 
     
-    // XOR is used to find  
-    /*
+     XOR is used to find  
+   
     1.Remove duplicates
     2.Find missing/single elements
     3.used in swapping (done upside)
-    */
     
-    /*2. Problem: You are given an array where every element appears twice, except one.
+    
+    *2. Problem: You are given an array where every element appears twice, except one.
        Find that one unique element using XOR.
     
-    */
+  
   //  ->
-  /*
+  
   int arr[5]={5,3,4,3,5};
   int res=0;
   for(int i=0;i< 5;i++){
@@ -82,7 +80,7 @@ int main() {
     return 0;
 
 
- pointers and references ->keys points     -- ->    Use references (&) for cleaner code when modifying values.
+ * pointers and references ->keys points     -- ->    Use references (&) for cleaner code when modifying values.
 
                                             --->   Use pointers (*) when you need advanced memory control, dynamic allocation, or when working with arrays.
 
@@ -153,4 +151,105 @@ cin>>a>>b;
 swap(&a,&b);
 return 0;
 }  
+
+
+
+
+* Pointer Practice Problems in C++
+ 
+#include <bits/stdc++.h>
+using namespace std;
+// 1. Print value and address of a variable using pointer
+void printAddressAndValue() {
+    int a = 10;
+    int *p = &a;
+    cout << "Value: " << *p << ", Address: " << p << endl;
+}
+
+// 2. Swap two integers using pointers
+void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+// 3. Reverse an array using pointers
+void reverseArray(int *arr, int n) {
+    int *start = arr;
+    int *end = arr + n - 1;
+    while (start < end) {
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        start++; 
+        end--;
+    }
+}
+
+// 4. Sum of elements in array using pointers
+int sumArray(int *arr, int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += *(arr + i);
+    }
+    return sum;
+}
+
+// 5. Maximum element in array using pointer
+int maxElement(int *arr, int n) {
+    int max = *arr;
+    for (int i = 1; i < n; i++) {
+        if (*(arr + i) > max) max = *(arr + i);
+    }
+    return max;
+}
+
+// 6. Reverse a string using pointers
+void reverseString(char *str) {
+    char *start = str;
+    char *end = str + strlen(str) - 1;
+    while (start < end) {
+        char temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+}
+
+// 7. Count vowels in a string using pointers
+int countVowels(char *str) {
+    int count = 0;
+    while (*str) {
+        char ch = tolower(*str);
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            count++;
+        str++;
+    }
+    return count;
+}
+
+int main() {
+    printAddressAndValue();
+
+    int a = 5, b = 10;
+    swap(&a, &b);
+    cout << "Swapped: a = " << a << ", b = " << b << endl;
+
+    int arr[] = {1, 2, 3, 4, 5};
+    reverseArray(arr, 5);
+    for (int i : arr) cout << i << " ";
+    cout << endl;
+
+    cout << "Sum: " << sumArray(arr, 5) << endl;
+    cout << "Max: " << maxElement(arr, 5) << endl;
+
+    char str[] = "pointer";
+    reverseString(str);
+    cout << "Reversed String: " << str << endl;
+    cout << "Vowel Count: " << countVowels(str) << endl;
+
+    return 0;
+}
+
    
